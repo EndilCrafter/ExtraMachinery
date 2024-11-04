@@ -50,6 +50,8 @@ public class LibResources {
     public static final ResourceLocation ADVANCED_ORECHID_GUI = gui(LibNames.ADVANCED_ORECHID);
     public static final ResourceLocation ULTIMATE_ORECHID_GUI = gui(LibNames.ULTIMATE_ORECHID);
 
+    public static final ResourceLocation GREENHOUSE_GUI = gui(LibNames.GREENHOUSE);
+
     public LibResources() {
     }
 

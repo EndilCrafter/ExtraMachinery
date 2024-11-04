@@ -5,9 +5,25 @@ import org.moddingx.libx.config.Config;
 import org.moddingx.libx.config.Group;
 import org.moddingx.libx.config.validate.IntRange;
 
+import java.util.List;
+
 @RegisterConfig("server")
 public class LibXServerConfig {
     public LibXServerConfig() {
+    }
+
+    @Group({"Settings Greenhouse"})
+
+    public static class GreenhouseSettings{
+
+        @Config("Mana Storage")
+        public static int manaStorage = 1000000000;
+
+        @Config("Slot limit for flowers")
+        public static int slotLimit = 4;
+
+        public GreenhouseSettings() {}
+
     }
 
 
@@ -426,7 +442,4 @@ public class LibXServerConfig {
     @Config({"How long will it take for a request to send resources from output slots to ME? (In ticks)"})
     @IntRange( min = 1 )
     public static int tickOutputSlots = 20;
-
-
 }
-

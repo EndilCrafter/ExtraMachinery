@@ -56,6 +56,9 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.C
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarUpgraded;
+import net.lmor.botanicalextramachinery.blocks.greenhouse.BlockEntityGreenhouse;
+import net.lmor.botanicalextramachinery.blocks.greenhouse.BlockGreenhouse;
+import net.lmor.botanicalextramachinery.blocks.greenhouse.ContainerGreenhouse;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUltimate;
@@ -138,6 +141,8 @@ public class ModBlocks {
     public static final MenuBlockBE<BlockEntityOrechidAdvanced, ContainerOrechidAdvanced> advancedOrechid;
     public static final MenuBlockBE<BlockEntityOrechidUltimate, ContainerOrechidUltimate> ultimateOrechid;
 
+    public static final MenuBlockBE<BlockEntityGreenhouse, ContainerGreenhouse> greenhouse;
+
 
     public ModBlocks() {
     }
@@ -187,6 +192,8 @@ public class ModBlocks {
         upgradedOrechid = new BlockOrechidUpgraded(ExtraMachinery.getInstance(), BlockEntityOrechidUpgraded.class, BlockEntityMenu.createMenuType(ContainerOrechidUpgraded::new));
         advancedOrechid = new BlockOrechidAdvanced(ExtraMachinery.getInstance(), BlockEntityOrechidAdvanced.class, BlockEntityMenu.createMenuType(ContainerOrechidAdvanced::new));
         ultimateOrechid = new BlockOrechidUltimate(ExtraMachinery.getInstance(), BlockEntityOrechidUltimate.class, BlockEntityMenu.createMenuType(ContainerOrechidUltimate::new));
+
+        greenhouse = new BlockGreenhouse(ExtraMachinery.getInstance(), BlockEntityGreenhouse.class, BlockEntityMenu.createMenuType(ContainerGreenhouse::new));
 
     }
 

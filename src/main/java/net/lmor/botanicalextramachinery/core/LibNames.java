@@ -61,6 +61,8 @@ public class LibNames {
     public static final String ADVANCED_ORECHID = "advanced_orechid";
     public static final String ULTIMATE_ORECHID = "ultimate_orechid";
 
+    public static final String GREENHOUSE = "greenhouse";
+
     public LibNames() {
     }
 }
