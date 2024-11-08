@@ -3,7 +3,7 @@ package net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAggl
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory.ContainerIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryUltimate;
@@ -45,8 +45,8 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
         for (int i = 0; i < 2; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null){
                 List<ItemStack> items = new ArrayList<>();
-                items.add(new ItemStack(ModItems.catalystManaInfinity));
-                items.add(new ItemStack(ModItems.catalystSpeed));
+                items.add(new ItemStack(ExtraMachineryItems.catalystManaInfinity));
+                items.add(new ItemStack(ExtraMachineryItems.catalystSpeed));
 
                 GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 9 + (149 * i), this.topPos + 84);
             }

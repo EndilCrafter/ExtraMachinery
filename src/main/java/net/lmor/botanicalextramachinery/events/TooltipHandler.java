@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.events;
 
 import net.lmor.botanicalextramachinery.ExtraMachinery;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.util.NumberFormatter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.lmor.botanicalextramachinery.ModBlocks.*;
+import static net.lmor.botanicalextramachinery.ExtraMachineryBlocks.*;
 
 @Mod.EventBusSubscriber(modid = ExtraMachinery.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class TooltipHandler {
@@ -81,7 +81,7 @@ public class TooltipHandler {
             }
         }
 
-        if (stack.getItem().asItem() == ModItems.catalystSpeed.asItem()){
+        if (stack.getItem().asItem() == ExtraMachineryItems.catalystSpeed.asItem()){
             event.getToolTip().add(Component.translatable("botanicalextramachinery.tooltip.item.upgrade_speed_1"));
             event.getToolTip().add(Component.translatable("botanicalextramachinery.tooltip.item.upgrade_speed_2"));
         }

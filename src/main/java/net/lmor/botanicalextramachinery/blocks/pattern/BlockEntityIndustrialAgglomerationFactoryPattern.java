@@ -12,8 +12,8 @@ import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
-import net.lmor.botanicalextramachinery.ModBlocks;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.WorkingTile;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryBase;
@@ -80,7 +80,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
         if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1){
             this.inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
                     .validator((stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.TERRA_PLATE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
-                    .validator((stack) -> {return (stack.getItem() == ModItems.catalystSpeed.asItem() || stack.getItem() == ModItems.catalystManaInfinity.asItem());}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
+                    .validator((stack) -> {return (stack.getItem() == ExtraMachineryItems.catalystSpeed.asItem() || stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem());}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
                     .contentsChanged(() -> { this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
@@ -119,14 +119,14 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
             }
 
             if (this.getMaxMana() != this.getCurrentMana() && (
-                    (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystManaInfinity)||
-                    (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystManaInfinity))){
+                    (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ExtraMachineryItems.catalystManaInfinity)||
+                    (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ExtraMachineryItems.catalystManaInfinity))){
                 this.receiveMana(this.getMaxMana());
             }
 
             if (this.speedMulti == 1 && (
-                    (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystSpeed)||
-                            (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystSpeed))){
+                    (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ExtraMachineryItems.catalystSpeed)||
+                            (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ExtraMachineryItems.catalystSpeed))){
                 this.speedMulti = 4;
             } else{
                 this.speedMulti = 1;
@@ -209,16 +209,16 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityIndustrialAgglomerationFactoryBase){
-            return ModBlocks.baseIndustrialAgglomerationFactory.asItem();
+            return ExtraMachineryBlocks.baseIndustrialAgglomerationFactory.asItem();
         }
         else if (blockEntity instanceof BlockEntityIndustrialAgglomerationFactoryUpgraded){
-            return ModBlocks.upgradedIndustrialAgglomerationFactory.asItem();
+            return ExtraMachineryBlocks.upgradedIndustrialAgglomerationFactory.asItem();
         }
         else if (blockEntity instanceof BlockEntityIndustrialAgglomerationFactoryAdvanced){
-            return ModBlocks.advancedIndustrialAgglomerationFactory.asItem();
+            return ExtraMachineryBlocks.advancedIndustrialAgglomerationFactory.asItem();
         }
         else {
-            return ModBlocks.ultimateIndustrialAgglomerationFactory.asItem();
+            return ExtraMachineryBlocks.ultimateIndustrialAgglomerationFactory.asItem();
         }
     }
 

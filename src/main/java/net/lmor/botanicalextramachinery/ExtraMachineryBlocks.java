@@ -96,7 +96,7 @@ import org.moddingx.libx.base.tile.MenuBlockBE;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 @RegisterClass(registry = "BLOCKS", priority = 1)
-public class ModBlocks {
+public class ExtraMachineryBlocks {
     public static final BlockBase malachiteDragonstoneBlock;
     public static final BlockBase malachiteIngotBlock;
     public static final BlockBase saffronDragonstoneBlock;
@@ -144,7 +144,7 @@ public class ModBlocks {
     public static final MenuBlockBE<BlockEntityGreenhouse, ContainerGreenhouse> greenhouse;
 
 
-    public ModBlocks() {
+    public ExtraMachineryBlocks() {
     }
 
     static {

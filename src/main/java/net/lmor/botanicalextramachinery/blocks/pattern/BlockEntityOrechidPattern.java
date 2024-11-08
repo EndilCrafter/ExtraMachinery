@@ -13,8 +13,8 @@ import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
-import net.lmor.botanicalextramachinery.ModBlocks;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidUpgraded;
@@ -89,7 +89,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
 
         if (upgrade_slot != null){
             this.inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
-                    .validator((stack) -> { return stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystStoneInfinity.asItem();}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
+                    .validator((stack) -> { return stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem() || stack.getItem() == ExtraMachineryItems.catalystStoneInfinity.asItem();}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
                     .validator((stack) -> { return this.level != null && getInputs().contains(stack.getItem());}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .validator((stack) -> { return getOutputs().contains(stack.getItem());}, FILTER_SLOTS.stream().mapToInt(Integer::intValue).toArray())
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();})
@@ -152,8 +152,8 @@ public class BlockEntityOrechidPattern extends BotanicalTile
             }
 
             if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1) {
-                if ((this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystManaInfinity
-                        || this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)) {
+                if ((this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ExtraMachineryItems.catalystManaInfinity
+                        || this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ExtraMachineryItems.catalystManaInfinity)) {
                     if (this.getMaxMana() != this.getCurrentMana()) this.receiveMana(this.getMaxMana());
                     catalystMana = true;
                 } else this.catalystMana = false;
@@ -204,8 +204,8 @@ public class BlockEntityOrechidPattern extends BotanicalTile
 
                 if (count_success != 0){
                     if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1){
-                        if (this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystStoneInfinity
-                                || this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystStoneInfinity){
+                        if (this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ExtraMachineryItems.catalystStoneInfinity
+                                || this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ExtraMachineryItems.catalystStoneInfinity){
                             ItemStack stone = new ItemStack(Items.STONE);
                             stone.setCount(64);
                             for (int i = FIRST_INPUT_SLOT; i <= LAST_INPUT_SLOT; i++){
@@ -374,16 +374,16 @@ public class BlockEntityOrechidPattern extends BotanicalTile
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityOrechidBase){
-            return ModBlocks.baseOrechid.asItem();
+            return ExtraMachineryBlocks.baseOrechid.asItem();
         }
         else if (blockEntity instanceof BlockEntityOrechidUpgraded){
-            return ModBlocks.upgradedOrechid.asItem();
+            return ExtraMachineryBlocks.upgradedOrechid.asItem();
         }
         else if (blockEntity instanceof BlockEntityOrechidAdvanced){
-            return ModBlocks.advancedOrechid.asItem();
+            return ExtraMachineryBlocks.advancedOrechid.asItem();
         }
         else {
-            return ModBlocks.ultimateOrechid.asItem();
+            return ExtraMachineryBlocks.ultimateOrechid.asItem();
         }
     }
 

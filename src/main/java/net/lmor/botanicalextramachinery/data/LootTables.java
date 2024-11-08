@@ -2,7 +2,7 @@ package net.lmor.botanicalextramachinery.data;
 
 import de.melanx.botanicalmachinery.core.TileTags;
 import net.lmor.botanicalextramachinery.ExtraMachinery;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.minecraft.data.DataGenerator;
 import org.moddingx.libx.annotation.data.Datagen;
 import org.moddingx.libx.datagen.provider.loot.BlockLootProviderBase;
@@ -14,41 +14,41 @@ public class LootTables extends BlockLootProviderBase {
     }
 
     protected void setup() {
-        this.drops(ModBlocks.baseAlfheimMarket, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.upgradedAlfheimMarket, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.advancedAlfheimMarket, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.ultimateAlfheimMarket, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.baseAlfheimMarket, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.upgradedAlfheimMarket, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.advancedAlfheimMarket, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.ultimateAlfheimMarket, this.copyNBT(TileTags.MANA));
 
-        this.drops(ModBlocks.baseIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.upgradedIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.advancedIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.ultimateIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.baseIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.upgradedIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.advancedIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.ultimateIndustrialAgglomerationFactory, this.copyNBT(TileTags.MANA));
 
-        this.drops(ModBlocks.baseApothecary, this.copyNBT(TileTags.FLUID));
-        this.drops(ModBlocks.upgradedApothecary, this.copyNBT(TileTags.FLUID));
-        this.drops(ModBlocks.advancedApothecary, this.copyNBT(TileTags.FLUID));
-        this.drops(ModBlocks.ultimateApothecary, this.copyNBT(TileTags.FLUID));
+        this.drops(ExtraMachineryBlocks.baseApothecary, this.copyNBT(TileTags.FLUID));
+        this.drops(ExtraMachineryBlocks.upgradedApothecary, this.copyNBT(TileTags.FLUID));
+        this.drops(ExtraMachineryBlocks.advancedApothecary, this.copyNBT(TileTags.FLUID));
+        this.drops(ExtraMachineryBlocks.ultimateApothecary, this.copyNBT(TileTags.FLUID));
 
-        this.drops(ModBlocks.baseDaisy, this.copyNBT());
-        this.drops(ModBlocks.upgradedDaisy, this.copyNBT());
-        this.drops(ModBlocks.advancedDaisy, this.copyNBT());
-        this.drops(ModBlocks.ultimateDaisy, this.copyNBT());
+        this.drops(ExtraMachineryBlocks.baseDaisy, this.copyNBT());
+        this.drops(ExtraMachineryBlocks.upgradedDaisy, this.copyNBT());
+        this.drops(ExtraMachineryBlocks.advancedDaisy, this.copyNBT());
+        this.drops(ExtraMachineryBlocks.ultimateDaisy, this.copyNBT());
 
-        this.drops(ModBlocks.baseManaPool, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.upgradedManaPool, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.advancedManaPool, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.ultimateManaPool, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.baseManaPool, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.upgradedManaPool, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.advancedManaPool, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.ultimateManaPool, this.copyNBT(TileTags.MANA));
 
-        this.drops(ModBlocks.baseRunicAltar, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.upgradedRunicAltar, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.advancedRunicAltar, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.ultimateRunicAltar, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.baseRunicAltar, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.upgradedRunicAltar, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.advancedRunicAltar, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.ultimateRunicAltar, this.copyNBT(TileTags.MANA));
 
-        this.drops(ModBlocks.baseOrechid, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.upgradedOrechid, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.advancedOrechid, this.copyNBT(TileTags.MANA));
-        this.drops(ModBlocks.ultimateOrechid, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.baseOrechid, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.upgradedOrechid, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.advancedOrechid, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.ultimateOrechid, this.copyNBT(TileTags.MANA));
 
-        this.drops(ModBlocks.greenhouse, this.copyNBT(TileTags.MANA));
+        this.drops(ExtraMachineryBlocks.greenhouse, this.copyNBT(TileTags.MANA));
     }
 }

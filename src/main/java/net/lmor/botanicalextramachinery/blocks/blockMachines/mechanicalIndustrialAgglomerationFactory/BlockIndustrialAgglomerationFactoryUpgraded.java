@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalIndustrialAgglomerationFactory;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory.ContainerIndustrialAgglomerationFactoryUpgraded;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAgglomerationFactory.ScreenIndustrialAgglomerationFactoryUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalIndustrialAgglomerationFactory.RenderIndustrialAgglomerationFactoryUpgraded;
@@ -38,7 +38,7 @@ public class BlockIndustrialAgglomerationFactoryUpgraded extends BotanicalBlock<
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         super.registerClient(ctx);
-        MenuScreens.register(ModBlocks.upgradedIndustrialAgglomerationFactory.menu, ScreenIndustrialAgglomerationFactoryUpgraded::new);
+        MenuScreens.register(ExtraMachineryBlocks.upgradedIndustrialAgglomerationFactory.menu, ScreenIndustrialAgglomerationFactoryUpgraded::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderIndustrialAgglomerationFactoryUpgraded();
         });

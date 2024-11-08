@@ -2,7 +2,7 @@ package net.lmor.botanicalextramachinery.blocks.screens.mechanicalOrechid;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalOrechid.ContainerOrechidUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidUltimate;
@@ -58,8 +58,8 @@ public class ScreenOrechidUltimate extends ExtraScreenBase<ContainerOrechidUltim
         for (int i = 0; i < 2; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null){
                 List<ItemStack> items = new ArrayList<>();
-                items.add(new ItemStack(ModItems.catalystManaInfinity));
-                items.add(new ItemStack(ModItems.catalystStoneInfinity));
+                items.add(new ItemStack(ExtraMachineryItems.catalystManaInfinity));
+                items.add(new ItemStack(ExtraMachineryItems.catalystStoneInfinity));
 
                 GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 8 + 152 * i, this.topPos + 80);
             }

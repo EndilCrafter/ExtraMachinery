@@ -9,8 +9,8 @@ import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
-import net.lmor.botanicalextramachinery.ModBlocks;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.RecipeTile;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolBase;
@@ -84,7 +84,7 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
         if (isUpgrade){
             inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
                     .validator((stack) -> { return this.getCatalysts().contains(stack.getItem()); }, CATALYSTS_SLOT)
-                    .validator((stack) -> { return stack.getItem() == ModItems.catalystManaInfinity.asItem();}, UPGRADE_SLOT)
+                    .validator((stack) -> { return stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem();}, UPGRADE_SLOT)
                     .validator((stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.MANA_INFUSION_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, CATALYSTS_SLOT, UPGRADE_SLOT).output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
@@ -348,16 +348,16 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityManaPoolBase){
-            return ModBlocks.baseManaPool.asItem();
+            return ExtraMachineryBlocks.baseManaPool.asItem();
         }
         else if (blockEntity instanceof BlockEntityManaPoolUpgraded){
-            return ModBlocks.upgradedManaPool.asItem();
+            return ExtraMachineryBlocks.upgradedManaPool.asItem();
         }
         else if (blockEntity instanceof BlockEntityManaPoolAdvanced){
-            return ModBlocks.advancedManaPool.asItem();
+            return ExtraMachineryBlocks.advancedManaPool.asItem();
         }
         else {
-            return ModBlocks.ultimateManaPool.asItem();
+            return ExtraMachineryBlocks.ultimateManaPool.asItem();
         }
     }
 

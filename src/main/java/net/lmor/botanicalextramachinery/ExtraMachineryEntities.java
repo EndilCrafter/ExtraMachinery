@@ -16,7 +16,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 
-public class ModEntities {
+public class ExtraMachineryEntities {
     public static final EntityType<EntityMalachiteManaSpark> MALACHITE_SPARK = EntityType.Builder.<EntityMalachiteManaSpark>of(EntityMalachiteManaSpark::new, MobCategory.MISC).sized(0.2F, 0.5F).fireImmune().clientTrackingRange(4).updateInterval(10).build(LibNames.MALACHITE_SPARK);
     public static final EntityType<EntitySaffronManaSpark> SAFFRON_SPARK = EntityType.Builder.<EntitySaffronManaSpark>of(EntitySaffronManaSpark::new, MobCategory.MISC).sized(0.2F, 0.5F).fireImmune().clientTrackingRange(4).updateInterval(10).build(LibNames.SAFFRON_SPARK);
     public static final EntityType<EntityShadowManaSpark> SHADOW_SPARK = EntityType.Builder.<EntityShadowManaSpark>of(EntityShadowManaSpark::new, MobCategory.MISC).sized(0.2F, 0.5F).fireImmune().clientTrackingRange(4).updateInterval(10).build(LibNames.SHADOW_SPARK);

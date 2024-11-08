@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketAdvanced;
@@ -38,7 +38,7 @@ public class BlockAlfheimMarketAdvanced extends BotanicalBlock<BlockEntityAlfhei
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         super.registerClient(ctx);
-        MenuScreens.register(ModBlocks.advancedAlfheimMarket.menu, ScreenAlfheimMarketAdvanced::new);
+        MenuScreens.register(ExtraMachineryBlocks.advancedAlfheimMarket.menu, ScreenAlfheimMarketAdvanced::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderAlpheimMarketAdvanced();
         });

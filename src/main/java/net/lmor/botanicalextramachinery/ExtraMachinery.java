@@ -1,5 +1,6 @@
 package net.lmor.botanicalextramachinery;
 
+import net.lmor.botanicalextramachinery.recipe.ExtraMachineryRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -24,12 +25,14 @@ public final class ExtraMachinery extends ModXRegistration {
         super(new CreativeModeTab(MOD_ID) {
             @Nonnull
             public ItemStack makeIcon() {
-                return new ItemStack(ModBlocks.shadowDragonstoneBlock);
+                return new ItemStack(ExtraMachineryBlocks.shadowDragonstoneBlock);
             }
         });
 
         instance = this;
-        ModEntities.registerEntities(bind(ForgeRegistries.ENTITY_TYPES));
+        ExtraMachineryEntities.registerEntities(bind(ForgeRegistries.ENTITY_TYPES));
+        ExtraMachineryRecipeTypes.submitRecipeTypes(bind(ForgeRegistries.RECIPE_TYPES));
+        ExtraMachineryRecipeTypes.submitRecipeSerializers(bind(ForgeRegistries.RECIPE_SERIALIZERS));
 
     }
 

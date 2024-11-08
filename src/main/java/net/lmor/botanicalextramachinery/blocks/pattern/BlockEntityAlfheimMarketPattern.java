@@ -12,8 +12,8 @@ import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
-import net.lmor.botanicalextramachinery.ModBlocks;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.WorkingTile;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketBase;
@@ -86,7 +86,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
         if (UPGRADE_SLOT != -1) {
             this.inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
                     .validator( (stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.ELVEN_TRADE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
-                    .validator( (stack) -> {return stack.getItem() == ModItems.catalystManaInfinity.asItem(); }, UPGRADE_SLOT)
+                    .validator( (stack) -> {return stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem(); }, UPGRADE_SLOT)
                     .slotLimit(1, UPGRADE_SLOT)
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1))
                     .contentsChanged(() -> {this.setChanged(); this.setDispatchable(); this.needsRecipeUpdate();})
@@ -113,7 +113,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
             }
 
             if (this.getMaxMana() != this.getCurrentMana() &&
-                    UPGRADE_SLOT != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT).getItem().asItem() == ModItems.catalystManaInfinity){
+                    UPGRADE_SLOT != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT).getItem().asItem() == ExtraMachineryItems.catalystManaInfinity){
                 this.receiveMana(this.getMaxMana());
             }
 
@@ -268,16 +268,16 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityAlfheimMarketBase){
-            return ModBlocks.baseAlfheimMarket.asItem();
+            return ExtraMachineryBlocks.baseAlfheimMarket.asItem();
         }
         else if (blockEntity instanceof BlockEntityAlfheimMarketUpgraded){
-            return ModBlocks.upgradedAlfheimMarket.asItem();
+            return ExtraMachineryBlocks.upgradedAlfheimMarket.asItem();
         }
         else if (blockEntity instanceof BlockEntityAlfheimMarketAdvanced){
-            return ModBlocks.advancedAlfheimMarket.asItem();
+            return ExtraMachineryBlocks.advancedAlfheimMarket.asItem();
         }
         else {
-            return ModBlocks.ultimateAlfheimMarket.asItem();
+            return ExtraMachineryBlocks.ultimateAlfheimMarket.asItem();
         }
     }
 

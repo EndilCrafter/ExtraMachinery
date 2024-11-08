@@ -2,7 +2,7 @@ package net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolAdvanced;
@@ -43,7 +43,7 @@ public class ScreenManaPoolAdvanced extends ExtraScreenBase<ContainerManaPoolAdv
 
         if (blockEntity.getInventory().getStackInSlot(1).isEmpty() && this.minecraft != null){
             List<ItemStack> items = new ArrayList<>();
-            items.add(new ItemStack(ModItems.catalystManaInfinity));
+            items.add(new ItemStack(ExtraMachineryItems.catalystManaInfinity));
 
             GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 89, this.topPos + 13);
         }

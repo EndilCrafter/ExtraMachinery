@@ -1,6 +1,6 @@
 package net.lmor.botanicalextramachinery.client;
 
-import net.lmor.botanicalextramachinery.ModEntities;
+import net.lmor.botanicalextramachinery.ExtraMachineryEntities;
 import net.lmor.botanicalextramachinery.render.RenderCrimsonManaSpark;
 import net.lmor.botanicalextramachinery.render.RenderMalachiteManaSpark;
 import net.lmor.botanicalextramachinery.render.RenderSaffronManaSpark;
@@ -10,10 +10,10 @@ import vazkii.botania.client.render.entity.EntityRenderers.EntityRendererConsume
 public class EntityRenderers {
 
     public static void registerEntityRenderers(EntityRendererConsumer consumer) {
-        consumer.accept(ModEntities.MALACHITE_SPARK, RenderMalachiteManaSpark::new);
-        consumer.accept(ModEntities.SAFFRON_SPARK, RenderSaffronManaSpark::new);
-        consumer.accept(ModEntities.SHADOW_SPARK, RenderShadowManaSpark::new);
-        consumer.accept(ModEntities.CRIMSON_SPARK, RenderCrimsonManaSpark::new);
+        consumer.accept(ExtraMachineryEntities.MALACHITE_SPARK, RenderMalachiteManaSpark::new);
+        consumer.accept(ExtraMachineryEntities.SAFFRON_SPARK, RenderSaffronManaSpark::new);
+        consumer.accept(ExtraMachineryEntities.SHADOW_SPARK, RenderShadowManaSpark::new);
+        consumer.accept(ExtraMachineryEntities.CRIMSON_SPARK, RenderCrimsonManaSpark::new);
     }
 
 }

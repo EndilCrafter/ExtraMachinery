@@ -13,8 +13,8 @@ import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
 import de.melanx.botanicalmachinery.data.CommonTags;
-import net.lmor.botanicalextramachinery.ModBlocks;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.WorkingTile;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalApothecary.BlockEntityApothecaryAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalApothecary.BlockEntityApothecaryBase;
@@ -116,7 +116,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 == -1){
             this.inventory = BaseItemStackHandler.builder(this.LAST_OUTPUT_SLOT + 1)
                     .validator( (stack) -> { return stack.is(CommonTags.MECHANICAL_APOTHECARY_CATALYSTS);}, SEEDS_SLOT)
-                    .validator( (stack) -> {return (stack.getItem() == ModItems.catalystSeedInfinity.asItem());}, UPGRADE_SLOT_1)
+                    .validator( (stack) -> {return (stack.getItem() == ExtraMachineryItems.catalystSeedInfinity.asItem());}, UPGRADE_SLOT_1)
                     .validator( (stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.PETAL_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1)
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
@@ -124,7 +124,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         } else if (UPGRADE_SLOT_1 != -1){
             this.inventory = BaseItemStackHandler.builder(this.LAST_OUTPUT_SLOT + 1)
                     .validator( (stack) -> { return stack.is(CommonTags.MECHANICAL_APOTHECARY_CATALYSTS);}, SEEDS_SLOT)
-                    .validator( (stack) -> {return (stack.getItem() == ModItems.catalystSeedInfinity.asItem() || stack.getItem() == ModItems.catalystWaterInfinity.asItem());}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
+                    .validator( (stack) -> {return (stack.getItem() == ExtraMachineryItems.catalystSeedInfinity.asItem() || stack.getItem() == ExtraMachineryItems.catalystWaterInfinity.asItem());}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
                     .validator( (stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.PETAL_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
@@ -228,8 +228,8 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
     public List<ItemStack> getUpgrades(){
         List<ItemStack> res = new ArrayList<>();
 
-        res.add(new ItemStack(ModItems.catalystWaterInfinity));
-        res.add(new ItemStack(ModItems.catalystSeedInfinity));
+        res.add(new ItemStack(ExtraMachineryItems.catalystWaterInfinity));
+        res.add(new ItemStack(ExtraMachineryItems.catalystSeedInfinity));
 
         return res;
     }
@@ -244,8 +244,8 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
             }
         } else if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1){
 
-            if (((!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystSeedInfinity.asItem()) ||
-                    (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystSeedInfinity.asItem())) &&
+            if (((!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ExtraMachineryItems.catalystSeedInfinity.asItem()) ||
+                    (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ExtraMachineryItems.catalystSeedInfinity.asItem())) &&
                     inventory.getStackInSlot(SEEDS_SLOT).isEmpty()){
                 ItemStack seed = Items.WHEAT_SEEDS.getDefaultInstance();
                 seed.setCount(64);
@@ -253,8 +253,8 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
                 inventory.setStackInSlot(SEEDS_SLOT, seed);
             }
 
-            if (((!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystWaterInfinity.asItem()) ||
-                    (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystWaterInfinity.asItem()))
+            if (((!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ExtraMachineryItems.catalystWaterInfinity.asItem()) ||
+                    (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ExtraMachineryItems.catalystWaterInfinity.asItem()))
                     && fluidInventory.getFluidAmount() != fluidInventory.getCapacity()){
 
                 FluidStack fluid = this.getFluidInventory().getFluid().copy();
@@ -427,16 +427,16 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityApothecaryBase){
-            return ModBlocks.baseApothecary.asItem();
+            return ExtraMachineryBlocks.baseApothecary.asItem();
         }
         else if (blockEntity instanceof BlockEntityApothecaryUpgraded){
-            return ModBlocks.upgradedApothecary.asItem();
+            return ExtraMachineryBlocks.upgradedApothecary.asItem();
         }
         else if (blockEntity instanceof BlockEntityApothecaryAdvanced){
-            return ModBlocks.advancedApothecary.asItem();
+            return ExtraMachineryBlocks.advancedApothecary.asItem();
         }
         else {
-            return ModBlocks.ultimateApothecary.asItem();
+            return ExtraMachineryBlocks.ultimateApothecary.asItem();
         }
     }
 

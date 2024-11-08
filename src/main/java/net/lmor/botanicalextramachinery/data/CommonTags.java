@@ -1,6 +1,6 @@
 package net.lmor.botanicalextramachinery.data;
 
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -15,24 +15,24 @@ public class CommonTags extends CommonTagsProviderBase {
     }
 
     public void setup() {
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.malachiteDragonstoneBlock);
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.saffronDragonstoneBlock);
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.shadowDragonstoneBlock);
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.crimsonDragonstoneBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.malachiteDragonstoneBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.saffronDragonstoneBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.shadowDragonstoneBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.crimsonDragonstoneBlock);
 
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.malachiteIngotBlock);
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.saffronIngotBlock);
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.shadowIngotBlock);
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.crimsonIngotBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.malachiteIngotBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.saffronIngotBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.shadowIngotBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ExtraMachineryBlocks.crimsonIngotBlock);
 
-        this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.malachiteDragonstoneBlock);
-        this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.saffronDragonstoneBlock);
-        this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.malachiteIngotBlock);
-        this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.saffronIngotBlock);
+        this.block(BlockTags.NEEDS_IRON_TOOL).add(ExtraMachineryBlocks.malachiteDragonstoneBlock);
+        this.block(BlockTags.NEEDS_IRON_TOOL).add(ExtraMachineryBlocks.saffronDragonstoneBlock);
+        this.block(BlockTags.NEEDS_IRON_TOOL).add(ExtraMachineryBlocks.malachiteIngotBlock);
+        this.block(BlockTags.NEEDS_IRON_TOOL).add(ExtraMachineryBlocks.saffronIngotBlock);
 
-        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.shadowDragonstoneBlock);
-        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.crimsonDragonstoneBlock);
-        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.shadowIngotBlock);
-        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.crimsonIngotBlock);
+        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ExtraMachineryBlocks.shadowDragonstoneBlock);
+        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ExtraMachineryBlocks.crimsonDragonstoneBlock);
+        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ExtraMachineryBlocks.shadowIngotBlock);
+        this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ExtraMachineryBlocks.crimsonIngotBlock);
     }
 }

@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.entities.manaSpark;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
@@ -206,7 +206,7 @@ public class EntityManaSparkPattern extends SparkBaseEntity implements ManaSpark
 
 
     protected Item getSparkItem() {
-        return ModItems.malachiteSpark;
+        return ExtraMachineryItems.malachiteSpark;
     }
 
     private void dropAndKill() {

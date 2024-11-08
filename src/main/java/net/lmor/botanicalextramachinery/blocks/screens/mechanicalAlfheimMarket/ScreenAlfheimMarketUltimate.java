@@ -3,7 +3,7 @@ package net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUltimate;
@@ -46,7 +46,7 @@ public class ScreenAlfheimMarketUltimate extends ExtraScreenBase<ContainerAlfhei
 
         if (blockEntity.getInventory().getStackInSlot(0).isEmpty() && this.minecraft != null){
             List<ItemStack> items = new ArrayList<>();
-            items.add(new ItemStack(ModItems.catalystManaInfinity));
+            items.add(new ItemStack(ExtraMachineryItems.catalystManaInfinity));
 
             GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 84 , this.topPos + 84);
         }

@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalManaPool.RenderManaPoolBase;
@@ -38,7 +38,7 @@ public class BlockManaPoolBase extends BotanicalBlock<BlockEntityManaPoolBase, C
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         super.registerClient(ctx);
-        MenuScreens.register(ModBlocks.baseManaPool.menu, ScreenManaPoolBase::new);
+        MenuScreens.register(ExtraMachineryBlocks.baseManaPool.menu, ScreenManaPoolBase::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderManaPoolBase();
         });

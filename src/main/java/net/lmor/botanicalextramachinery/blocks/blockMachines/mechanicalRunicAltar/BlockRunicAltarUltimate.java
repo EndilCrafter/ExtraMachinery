@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalRunicAltar;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalRunicAltar.ScreenRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalRunicAltar.RendererRunicAltarUltimate;
@@ -38,7 +38,7 @@ public class BlockRunicAltarUltimate extends BotanicalBlock<BlockEntityRunicAlta
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         super.registerClient(ctx);
-        MenuScreens.register(ModBlocks.ultimateRunicAltar.menu, ScreenRunicAltarUltimate::new);
+        MenuScreens.register(ExtraMachineryBlocks.ultimateRunicAltar.menu, ScreenRunicAltarUltimate::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RendererRunicAltarUltimate();
         });

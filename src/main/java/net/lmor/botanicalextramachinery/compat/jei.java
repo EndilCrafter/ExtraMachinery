@@ -5,7 +5,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import net.lmor.botanicalextramachinery.ExtraMachinery;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketUltimate;
@@ -91,39 +91,39 @@ public class jei implements IModPlugin {
     }
 
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseManaPool), ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedManaPool), ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedManaPool), ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateManaPool), ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseManaPool), ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedManaPool), ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedManaPool), ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateManaPool), ManaPoolRecipeCategory.TYPE);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseRunicAltar), RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedRunicAltar), RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedRunicAltar), RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateRunicAltar), RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseRunicAltar), RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedRunicAltar), RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedRunicAltar), RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateRunicAltar), RunicAltarRecipeCategory.TYPE);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseDaisy), PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedDaisy), PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedDaisy), PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateDaisy), PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseDaisy), PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedDaisy), PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedDaisy), PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateDaisy), PureDaisyRecipeCategory.TYPE);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseApothecary), PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedApothecary), PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedApothecary), PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateApothecary), PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseApothecary), PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedApothecary), PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedApothecary), PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateApothecary), PetalApothecaryRecipeCategory.TYPE);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseOrechid), OrechidRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedOrechid), OrechidRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedOrechid), OrechidRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateOrechid), OrechidRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.baseOrechid), OrechidRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.upgradedOrechid), OrechidRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.advancedOrechid), OrechidRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ExtraMachineryBlocks.ultimateOrechid), OrechidRecipeCategory.TYPE);
     }
 }

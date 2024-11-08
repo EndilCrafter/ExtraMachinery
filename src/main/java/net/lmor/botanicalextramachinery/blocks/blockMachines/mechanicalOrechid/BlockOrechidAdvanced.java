@@ -1,6 +1,6 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalOrechid;
 
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalOrechid.ContainerOrechidAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalOrechid.ScreenOrechidAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalOrechid.RenderOrechidAdvanced;
@@ -43,7 +43,7 @@ public class BlockOrechidAdvanced extends MenuBlockBE<BlockEntityOrechidAdvanced
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         ItemStackRenderer.addRenderBlock(this.getBlockEntityType(), true);
-        MenuScreens.register(ModBlocks.advancedOrechid.menu, ScreenOrechidAdvanced::new);
+        MenuScreens.register(ExtraMachineryBlocks.advancedOrechid.menu, ScreenOrechidAdvanced::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderOrechidAdvanced();
         });

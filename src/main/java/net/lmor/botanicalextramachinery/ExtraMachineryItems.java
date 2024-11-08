@@ -10,7 +10,7 @@ import org.moddingx.libx.base.ItemBase;
 
 
 @RegisterClass(registry = "ITEMS", priority = 1)
-public class ModItems {
+public class ExtraMachineryItems {
 
     public static final Item malachiteDragonstone;
     public static final Item malachiteIngot;
@@ -37,7 +37,7 @@ public class ModItems {
     public static final Item shadowSpark;
     public static final Item crimsonSpark;
 
-    public ModItems() {
+    public ExtraMachineryItems() {
     }
 
     static {

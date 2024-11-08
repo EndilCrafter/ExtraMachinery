@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.entities.manaSpark;
 
-import net.lmor.botanicalextramachinery.ModEntities;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryEntities;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -15,11 +15,11 @@ public class EntityShadowManaSpark extends EntityManaSparkPattern {
     }
 
     public EntityShadowManaSpark(Level level){
-        this(ModEntities.SHADOW_SPARK, level);
+        this(ExtraMachineryEntities.SHADOW_SPARK, level);
     }
 
     @Override
     protected Item getSparkItem() {
-        return ModItems.shadowSpark;
+        return ExtraMachineryItems.shadowSpark;
     }
 }

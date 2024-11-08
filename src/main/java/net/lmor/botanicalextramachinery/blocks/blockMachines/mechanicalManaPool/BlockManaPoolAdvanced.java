@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalManaPool.RenderManaPoolAdvanced;
@@ -38,7 +38,7 @@ public class BlockManaPoolAdvanced extends BotanicalBlock<BlockEntityManaPoolAdv
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         super.registerClient(ctx);
-        MenuScreens.register(ModBlocks.advancedManaPool.menu, ScreenManaPoolAdvanced::new);
+        MenuScreens.register(ExtraMachineryBlocks.advancedManaPool.menu, ScreenManaPoolAdvanced::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderManaPoolAdvanced();
         });

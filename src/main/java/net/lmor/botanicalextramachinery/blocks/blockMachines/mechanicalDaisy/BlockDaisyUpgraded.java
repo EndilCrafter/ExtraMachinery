@@ -1,6 +1,6 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalDaisy;
 
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalDaisy.ContainerDaisyUpgraded;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalDaisy.ScreenDaisyUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalDaisy.RenderDaisyUpgraded;
@@ -42,7 +42,7 @@ public class BlockDaisyUpgraded extends MenuBlockBE<BlockEntityDaisyUpgraded, Co
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         ItemStackRenderer.addRenderBlock(this.getBlockEntityType(), true);
-        MenuScreens.register(ModBlocks.upgradedDaisy.menu, ScreenDaisyUpgraded::new);
+        MenuScreens.register(ExtraMachineryBlocks.upgradedDaisy.menu, ScreenDaisyUpgraded::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderDaisyUpgraded();
         });

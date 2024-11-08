@@ -12,7 +12,7 @@ import appeng.api.util.AECableType;
 import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyUpgraded;
@@ -318,16 +318,16 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityDaisyBase){
-            return ModBlocks.baseDaisy.asItem();
+            return ExtraMachineryBlocks.baseDaisy.asItem();
         }
         else if (blockEntity instanceof BlockEntityDaisyUpgraded){
-            return ModBlocks.upgradedDaisy.asItem();
+            return ExtraMachineryBlocks.upgradedDaisy.asItem();
         }
         else if (blockEntity instanceof BlockEntityDaisyAdvanced){
-            return ModBlocks.advancedDaisy.asItem();
+            return ExtraMachineryBlocks.advancedDaisy.asItem();
         }
         else {
-            return ModBlocks.ultimateDaisy.asItem();
+            return ExtraMachineryBlocks.ultimateDaisy.asItem();
         }
     }
 

@@ -1,0 +1,16 @@
+{
+  "type": "botanicalextramachinery:greenhouse",
+  "flower": {
+    "item": "botania:endoflame"
+  },
+  "fuels": [
+    {
+      "item": "minecraft:coal_block",
+      "mana": 10800
+    },
+    {
+      "item": "minecraft:coal",
+      "mana": 1200
+    }
+  ]
+}

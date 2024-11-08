@@ -36,8 +36,8 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
             this.manaBar = new ManaBar(this, 0, x, y);
         }
 
-        if (blockEntity instanceof BlockEntityApothecaryPattern){
-            this.waterBar = new WaterBar(this, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getCapacity(), x, y);
+        if (blockEntity instanceof BlockEntityApothecaryPattern apothecary){
+            this.waterBar = new WaterBar(this, apothecary.getFluidInventory().getCapacity(), x, y);
         } else {
             this.waterBar = new WaterBar(this, 0, x, y);
         }
@@ -80,13 +80,13 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         this.renderBackground(poseStack);
         super.render(poseStack, mouseX, mouseY, partialTick);
         this.renderTooltip(poseStack, mouseX, mouseY);
-        BlockEntity blockEntity = ((BlockEntityMenu)this.menu).getBlockEntity();
+        BlockEntity blockEntity = ((BlockEntityMenu<?>)this.menu).getBlockEntity();
         if (blockEntity instanceof BotanicalTile botanicalTile && !(blockEntity instanceof BlockEntityApothecaryPattern)) {
             this.manaBar.renderHoveredToolTip(poseStack, mouseX, mouseY, botanicalTile.getCurrentMana());
         }
 
-        if (blockEntity instanceof BlockEntityApothecaryPattern){
-            this.waterBar.renderHoveredToolTip(poseStack, mouseX, mouseY, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getFluid().getAmount());
+        if (blockEntity instanceof BlockEntityApothecaryPattern apothecary){
+            this.waterBar.renderHoveredToolTip(poseStack, mouseX, mouseY, apothecary.getFluidInventory().getFluid().getAmount());
         }
 
     }
@@ -96,14 +96,14 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, screenLocation);
         this.blit(poseStack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
-        BlockEntity blockEntity = ((BlockEntityMenu)this.menu).getBlockEntity();
+        BlockEntity blockEntity = ((BlockEntityMenu<?>)this.menu).getBlockEntity();
 
         if (blockEntity instanceof BotanicalTile botanicalTile && !(blockEntity instanceof BlockEntityApothecaryPattern)) {
             this.manaBar.draw(poseStack, (float)botanicalTile.getCurrentMana());
         }
 
-        if (blockEntity instanceof BlockEntityApothecaryPattern){
-            this.waterBar.draw(poseStack, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getFluid().getAmount());
+        if (blockEntity instanceof BlockEntityApothecaryPattern apothecary){
+            this.waterBar.draw(poseStack, apothecary.getFluidInventory().getFluid().getAmount());
         }
     }
 }

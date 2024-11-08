@@ -2,7 +2,7 @@ package net.lmor.botanicalextramachinery.client;
 
 import com.google.common.base.Suppliers;
 import net.lmor.botanicalextramachinery.ExtraMachinery;
-import net.lmor.botanicalextramachinery.ModEntities;
+import net.lmor.botanicalextramachinery.ExtraMachineryEntities;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -51,7 +51,7 @@ public class ForgeClientInitializer {
 
     private static final Supplier<Map<EntityType<?>, Function<Entity, WandHUD>>> ENTITY_WAND_HUD = Suppliers.memoize(() -> {
         var ret = new IdentityHashMap<EntityType<?>, Function<Entity, WandHUD>>();
-        ModEntities.registerWandHudCaps((factory, types) -> {
+        ExtraMachineryEntities.registerWandHudCaps((factory, types) -> {
             for (var type : types) {
                 ret.put(type, factory);
             }

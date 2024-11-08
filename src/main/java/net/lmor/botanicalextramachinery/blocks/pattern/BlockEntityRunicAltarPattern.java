@@ -10,8 +10,8 @@ import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
 import com.google.common.collect.Streams;
-import net.lmor.botanicalextramachinery.ModBlocks;
-import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryItems;
 import net.lmor.botanicalextramachinery.blocks.base.WorkingTile;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarBase;
@@ -96,15 +96,15 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         if (isUpgrade[0] && isUpgrade[1]){
             inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
                     .validator((stack) -> {return stack.getItem() == BotaniaBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
-                    .validator((stack) -> {return (stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystLivingRockInfinity.asItem());}, UPGRADE_SLOT_1)
-                    .validator((stack) -> {return (stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystLivingRockInfinity.asItem()) ;}, UPGRADE_SLOT_2)
+                    .validator((stack) -> {return (stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem() || stack.getItem() == ExtraMachineryItems.catalystLivingRockInfinity.asItem());}, UPGRADE_SLOT_1)
+                    .validator((stack) -> {return (stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem() || stack.getItem() == ExtraMachineryItems.catalystLivingRockInfinity.asItem()) ;}, UPGRADE_SLOT_2)
                     .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2).output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
         } else if (isUpgrade[0]){
             inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
                     .validator((stack) -> {return stack.getItem() == BotaniaBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
-                    .validator((stack) -> {return stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystLivingRockInfinity.asItem();}, UPGRADE_SLOT_1)
+                    .validator((stack) -> {return stack.getItem() == ExtraMachineryItems.catalystManaInfinity.asItem() || stack.getItem() == ExtraMachineryItems.catalystLivingRockInfinity.asItem();}, UPGRADE_SLOT_1)
                     .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2).output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
@@ -137,8 +137,8 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public List<ItemStack> getUpgrades(){
         List<ItemStack> res = new ArrayList<>();
 
-        res.add(new ItemStack(ModItems.catalystManaInfinity));
-        res.add(new ItemStack(ModItems.catalystLivingRockInfinity));
+        res.add(new ItemStack(ExtraMachineryItems.catalystManaInfinity));
+        res.add(new ItemStack(ExtraMachineryItems.catalystLivingRockInfinity));
 
         return res;
     }
@@ -163,8 +163,8 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
             }
 
             if (isUpgrade[0] && this.getMaxMana() != this.getCurrentMana()
-                    && ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystManaInfinity)
-                    || (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystManaInfinity))){
+                    && ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ExtraMachineryItems.catalystManaInfinity)
+                    || (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ExtraMachineryItems.catalystManaInfinity))){
                 this.receiveMana(this.getMaxMana());
             }
 
@@ -173,8 +173,8 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                             inventory.getStackInSlot(LIVINGROCK_SLOT_2).isEmpty() ||
                             inventory.getStackInSlot(LIVINGROCK_SLOT_3).isEmpty())){
 
-                if ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystLivingRockInfinity.asItem()) ||
-                        (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystLivingRockInfinity.asItem())){
+                if ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ExtraMachineryItems.catalystLivingRockInfinity.asItem()) ||
+                        (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ExtraMachineryItems.catalystLivingRockInfinity.asItem())){
                     addLivingRockSlots();
                 }
             }
@@ -352,16 +352,16 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     protected Item getItemFromBlockEntity() {
         BlockEntity blockEntity = this.getBlockEntity();
         if (blockEntity instanceof BlockEntityRunicAltarBase){
-            return ModBlocks.baseRunicAltar.asItem();
+            return ExtraMachineryBlocks.baseRunicAltar.asItem();
         }
         else if (blockEntity instanceof BlockEntityRunicAltarUpgraded){
-            return ModBlocks.upgradedRunicAltar.asItem();
+            return ExtraMachineryBlocks.upgradedRunicAltar.asItem();
         }
         else if (blockEntity instanceof BlockEntityRunicAltarAdvanced){
-            return ModBlocks.advancedRunicAltar.asItem();
+            return ExtraMachineryBlocks.advancedRunicAltar.asItem();
         }
         else {
-            return ModBlocks.ultimateRunicAltar.asItem();
+            return ExtraMachineryBlocks.ultimateRunicAltar.asItem();
         }
     }
 

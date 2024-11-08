@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalApothecary;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
-import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ExtraMachineryBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalApothecary.ContainerApothecaryBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalApothecary.ScreenApothecaryBase;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalApothecary.RenderApothecaryBase;
@@ -59,7 +59,7 @@ public class BlockApothecaryBase extends MenuBlockBE<BlockEntityApothecaryBase, 
     @OnlyIn(Dist.CLIENT)
     public void registerClient(SetupContext ctx) {
         ItemStackRenderer.addRenderBlock(this.getBlockEntityType(), true);
-        MenuScreens.register(ModBlocks.baseApothecary.menu, ScreenApothecaryBase::new);
+        MenuScreens.register(ExtraMachineryBlocks.baseApothecary.menu, ScreenApothecaryBase::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderApothecaryBase();
         });

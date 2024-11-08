@@ -2,33 +2,26 @@ package net.lmor.botanicalextramachinery.blocks.greenhouse;
 
 import com.google.common.collect.Range;
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import net.lmor.botanicalextramachinery.config.LibXServerConfig;
+import net.lmor.botanicalextramachinery.recipe.ExtraMachineryRecipeTypes;
+import net.lmor.botanicalextramachinery.recipe.GreenhouseRecipe;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
-import vazkii.botania.api.block_entity.BindableSpecialFlowerBlockEntity;
-import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
-import vazkii.botania.api.mana.ManaCollector;
-import vazkii.botania.common.block.BotaniaFlowerBlocks;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class BlockEntityGreenhouse extends BotanicalTile {
+public class BlockEntityGreenhouse extends BotanicalTile  {
 
     private final BaseItemStackHandler inventory;
 
@@ -37,73 +30,66 @@ public class BlockEntityGreenhouse extends BotanicalTile {
     private final int FIRST_INPUT_SLOT_FUEL = 7;
     private final int LAST_INPUT_SLOT_FUEL = 34;
 
+    private Map<GreenhouseRecipe, Integer> recipe;
+
+    private List<Integer> fuelsSlotItem = new ArrayList<>();
+
     private int slotLimit = LibXServerConfig.GreenhouseSettings.slotLimit;
-
-    private List<Block> availableFlowers = new ArrayList<>();
-
-    Map<Item, Map<Item, Integer>> flowerFuelMap = new HashMap<>();
+    private int sleep = LibXServerConfig.GreenhouseSettings.sleep;
 
     public BlockEntityGreenhouse(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state, LibXServerConfig.GreenhouseSettings.manaStorage);
-
-        defaultGenAvailableFlowers();
 
         inventory = BaseItemStackHandler.builder(LAST_INPUT_SLOT_FUEL + 1)
                 .validator(this::isFlowerToAvailableFlowers, Range.closedOpen(FIRST_INPUT_SLOT_FLOWERS, LAST_INPUT_SLOT_FLOWERS + 1))
                 .validator(this::isFuelToFlower, Range.closedOpen(FIRST_INPUT_SLOT_FUEL, LAST_INPUT_SLOT_FUEL + 1))
                 .slotLimit(slotLimit, Range.closedOpen(FIRST_INPUT_SLOT_FLOWERS, LAST_INPUT_SLOT_FLOWERS + 1)).output()
                 .contentsChanged(() -> {this.setChanged();this.setDispatchable();})
+                .contentsChanged(this::addFuel)
                 .build();
+    }
+
+    private void addFuel(int slot){
+        System.out.println(slot);
+        if (slot == LAST_INPUT_SLOT_FUEL){
+            this.recipe = null;
+        }
+
+        if (slot >= FIRST_INPUT_SLOT_FUEL && slot <= LAST_INPUT_SLOT_FUEL){
+            if (!this.getInventory().getStackInSlot(slot).isEmpty() && !fuelsSlotItem.contains(slot)){
+                fuelsSlotItem.add(slot);
+            }
+            else if (this.getInventory().getStackInSlot(slot).isEmpty() && fuelsSlotItem.contains(slot)){
+                fuelsSlotItem.remove((Object) slot);
+            }
+        }
+
+        Collections.sort(fuelsSlotItem);
 
     }
 
     private boolean isFuelToFlower(ItemStack itemStack){
-        if (level == null || level.isClientSide()) return false;
-        for (Block block: availableFlowers){
-            if (itemStack.getItem().asItem() == block.getStateDefinition().getOwner().asItem()) return false;
+        if (this.level != null){
+            for(GreenhouseRecipe rc: this.level.getRecipeManager().getAllRecipesFor(ExtraMachineryRecipeTypes.GREENHOUSE_TYPE)){
+                for (ItemStack fuel: rc.getFuels()){
+                    if (fuel.getItem() == itemStack.getItem()){
+                        return true;
+                    }
+                }
+            }
         }
-        return true;
+        return false;
     }
 
     private boolean isFlowerToAvailableFlowers(ItemStack itemStack){
-        if (level == null || level.isClientSide()) return false;
-
-        ItemStack flowerSlot = ItemStack.EMPTY;
-        for (int i = FIRST_INPUT_SLOT_FLOWERS; i <= LAST_INPUT_SLOT_FLOWERS; i++){
-            if (!this.inventory.getStackInSlot(i).isEmpty()){
-                flowerSlot = this.inventory.getStackInSlot(i);
-                break;
-            }
-        }
-
-        if (flowerSlot.isEmpty()){
-            for (Block block: availableFlowers){
-                System.out.println("---------------------------------------");
-                System.out.println(block.getStateDefinition().getOwner().asItem());
-                System.out.println(itemStack.getItem().asItem());
-
-                if (itemStack.getItem().asItem() == block.getStateDefinition().getOwner().asItem()){
+        if (this.level != null){
+            for(GreenhouseRecipe rc: this.level.getRecipeManager().getAllRecipesFor(ExtraMachineryRecipeTypes.GREENHOUSE_TYPE)){
+                if (rc.matches(itemStack)){
                     return true;
                 }
             }
-            return false;
-        } else{
-            return itemStack.getItem().asItem() == flowerSlot.getItem().asItem();
         }
-    }
-
-    private void defaultGenAvailableFlowers(){
-        addFlowers(BotaniaFlowerBlocks.endoflameFloating);
-        addFlowers(BotaniaFlowerBlocks.entropinnyumFloating);
-        addFlowers(BotaniaFlowerBlocks.gourmaryllisFloating);
-        addFlowers(BotaniaFlowerBlocks.kekimurusFloating);
-        addFlowers(BotaniaFlowerBlocks.munchdewFloating);
-        addFlowers(BotaniaFlowerBlocks.narslimmusFloating);
-        addFlowers(BotaniaFlowerBlocks.rosaArcanaFloating);
-    }
-
-    public void addFlowers(Block flower){
-        availableFlowers.add(flower);
+        return false;
     }
 
     public void drops(){
@@ -115,6 +101,69 @@ public class BlockEntityGreenhouse extends BotanicalTile {
             if (itemStack.isEmpty()) continue;
             ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
             this.level.addFreshEntity(ie);
+        }
+    }
+
+    @Override
+    public void tick() {
+        if (this.level != null && !this.level.isClientSide()){
+
+            if (sleep > 0){
+                sleep--;
+            }
+
+
+            if (level == null || level.isClientSide() ||
+                    fuelsSlotItem.size() == 0 || getCurrentMana() == getMaxMana() || sleep > 0) return;
+
+            for (int slotFlower = FIRST_INPUT_SLOT_FLOWERS; slotFlower <= LAST_INPUT_SLOT_FLOWERS; slotFlower++){
+                if (inventory.getStackInSlot(slotFlower).isEmpty()) continue;
+
+                GreenhouseRecipe recipePre = null;
+                ItemStack flower = inventory.getStackInSlot(slotFlower);
+                for (GreenhouseRecipe rc: this.level.getRecipeManager().getAllRecipesFor(ExtraMachineryRecipeTypes.GREENHOUSE_TYPE)){
+                    if (rc.matches(flower)){
+                        recipePre = rc;
+                        break;
+                    }
+                }
+
+                if (recipePre == null) continue;
+
+                ItemStack fuel = null;
+                int countFuel = 0;
+                int slotFuel = -1;
+
+                for (Integer sf: fuelsSlotItem){
+                    if (recipePre.ifFuelToRecipe(inventory.getStackInSlot(sf))){
+                        fuel = getInventory().getStackInSlot(sf);
+                        slotFuel = sf;
+                        countFuel = fuel.getCount();
+                        break;
+                    }
+                }
+
+                if (fuel == null) continue;
+
+                int countEat = getInventory().getStackInSlot(slotFlower).getCount();
+                int manaAdd = recipePre.getManaToConsume(fuel);
+
+                if (manaAdd + getCurrentMana() > getMaxMana()) break;
+                else if (manaAdd + getCurrentMana() == getMaxMana()) countEat = 1;
+                else {
+                    while (countEat * manaAdd > getMaxMana() || countEat > countFuel){
+                        countEat--;
+                    }
+                }
+
+                countEat = Math.min(countEat, getInventory().getStackInSlot(slotFuel).getCount());
+
+                IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
+                inventory.extractItem(slotFuel, countEat, false);
+                this.receiveMana(countEat * manaAdd);
+            }
+
+            sleep = LibXServerConfig.GreenhouseSettings.sleep;
         }
     }
 
@@ -132,10 +181,5 @@ public class BlockEntityGreenhouse extends BotanicalTile {
     @Override
     public int getComparatorOutput() {
         return 0;
-    }
-
-    @Override
-    public void tick() {
-
     }
 }

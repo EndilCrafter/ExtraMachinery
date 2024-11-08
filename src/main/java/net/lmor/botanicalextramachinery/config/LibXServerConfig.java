@@ -22,6 +22,9 @@ public class LibXServerConfig {
         @Config("Slot limit for flowers")
         public static int slotLimit = 4;
 
+        @Config("Sleeping between recipes")
+        public static int sleep = 5;
+
         public GreenhouseSettings() {}
 
     }

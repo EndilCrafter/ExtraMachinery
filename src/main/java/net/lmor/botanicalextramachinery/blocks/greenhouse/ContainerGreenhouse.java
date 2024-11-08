@@ -20,7 +20,7 @@ public class ContainerGreenhouse extends BlockEntityMenu<BlockEntityGreenhouse> 
     static int INVENTORY = 35;
 
     public ContainerGreenhouse(@Nullable MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
-        super(type, windowId, level, pos, playerContainer, player, -1, INVENTORY);
+        super(type, windowId, level, pos, playerContainer, player, 35, INVENTORY);
         IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
 
         int index = this.addSlotBox(inventory, 0, 30, 23, 7, 18, 1, 18);
